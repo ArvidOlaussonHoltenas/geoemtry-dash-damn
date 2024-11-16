@@ -35,17 +35,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         CheckGround();
-        if (Physics2D.OverlapBox(feet.position, feet.localScale, 0, filter, results) > 0 && velocityY <= 0)
-        {
-            velocityY = 0;
-            Vector2 surface = Physics2D.ClosestPoint(transform.position, results[0]) + Vector2.up * floorHeight;
-            transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
         CheckInput();
         ChangeGamemode();
 
@@ -67,10 +56,10 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(new Vector3(velocityX, velocityY, 0) * Time.deltaTime); //Apply movement
     }
-    
+
     void CheckGround()
     {
-        /*if (Physics2D.OverlapBox(feet.position, feet.localScale, 0, filter, results) > 0 && velocityY <= 0)
+        if (Physics2D.OverlapBox(feet.position, feet.localScale, 0, filter, results) > 0 && velocityY <= 0)
         {
             velocityY = 0;
             Vector2 surface = Physics2D.ClosestPoint(transform.position, results[0]) + Vector2.up * floorHeight;
@@ -80,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isGrounded = false;
-        }*/
+        }
     }
 
     void Movement()
@@ -102,12 +91,12 @@ public class PlayerMovement : MonoBehaviour
     void CheckInput()
     {
         jumpInputPressed = false;
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             jumpInput = true;
             jumpInputPressed = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.UpArrow))
         {
             jumpInput = false;
         }
