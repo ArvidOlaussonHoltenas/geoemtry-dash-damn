@@ -1,21 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ScrollBackground : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
+    [SerializeField] Player player;
+    
     void Update()
     {
-        transform.position -= new Vector3(1f, 0f, 0f) * Time.deltaTime;
-        transform.localPosition = new Vector3(transform.localPosition.x, (transform.localPosition.y - transform.position.y) / 5 + 7, transform.localPosition.z);
+        transform.localPosition = new Vector3(Camera.main.transform.position.x / -9, (transform.localPosition.y - transform.position.y) / 5 + 7, transform.localPosition.z);
         if (transform.localPosition.x <= -24)
         {
-            transform.localPosition = new Vector3(0f, transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition += new Vector3(24f, 0f, 0f);
         }
     }
 }

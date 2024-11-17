@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class PlayerRotation : MonoBehaviour
 {
     public GameObject playerExtra;
-    public PlayerMovement playerMovement;
+    public Player player;
 
     public Sprite[] sprites;
     private SpriteRenderer spriteRenderer;
@@ -19,14 +19,14 @@ public class PlayerRotation : MonoBehaviour
 
     void Update()
     {
-        if (playerMovement.gamemode == "cube")
+        if (player.gamemode == "cube")
         {
             spriteRenderer.sprite = sprites[0];
             playerExtra.SetActive(false);
             transform.localScale = new Vector3(1f, 1f, 1f);
             transform.localPosition = new Vector3(0f, 0f, -0.25f);
             float targetAngle = Mathf.Ceil(transform.rotation.z / 90) * 90;
-            if (!playerMovement.isGrounded)
+            if (!player.isGrounded())
             {
                 transform.Rotate(0f, 0f, -560f * Time.deltaTime);
             }
@@ -37,15 +37,15 @@ public class PlayerRotation : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(vec), 20f * Time.deltaTime);
             }
         }
-        if (playerMovement.gamemode == "ship")
+        if (player.gamemode == "ship")
         {
             spriteRenderer.sprite = sprites[1];
             playerExtra.SetActive(true);
-            transform.localScale = new Vector3(1.2f, 1.2f * playerMovement.flipGravity, 1f);
-            transform.localPosition = new Vector3(0f, -0.2f * playerMovement.flipGravity, -0.5f);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, playerMovement.velocityY * 3.5f), 10f * Time.deltaTime);
+            transform.localScale = new Vector3(1.2f, 1.2f * player.flipGravity, 1f);
+            transform.localPosition = new Vector3(0f, -0.2f * player.flipGravity, -0.5f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, player.rb.velocity.y * 3.5f), 10f * Time.deltaTime);
 
-            if (playerMovement.isGrounded)
+            if (player.isGrounded())
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, 0f), 20f * Time.deltaTime);
             }
