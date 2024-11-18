@@ -9,6 +9,8 @@ public class CameraManager : MonoBehaviour
 
     public static CinemachineVirtualCamera ActiveCamera = null;
 
+    [SerializeField] GameObject groundRoof;
+
     public static bool IsActiveCamera(CinemachineVirtualCamera camera)
     {
         return camera == ActiveCamera;

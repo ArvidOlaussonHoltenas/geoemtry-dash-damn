@@ -15,7 +15,7 @@ public class CameraY : MonoBehaviour
     private void Update()
     {
         followX = playerObject.transform.position.x + 2.665698f;
-        followY = groundRoof.transform.position.y - ground.transform.position.y - 8.5f;
+        followY = groundRoof.transform.position.y - ground.transform.position.y - 9f;
         transform.position = new Vector3(followX, followY, transform.position.z);
     }
 }
