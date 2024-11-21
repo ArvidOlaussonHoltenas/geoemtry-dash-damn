@@ -5,18 +5,13 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     [SerializeField] GameObject playerObject;
-
-    void Start()
-    {
-        
-    }
+    [SerializeField] Player player;
 
     void Update()
     {
-        float relativeX = transform.position.x - playerObject.transform.position.x;
-        if (relativeX <= -16)
+        if (transform.localPosition.x - playerObject.transform.position.x < -16)
         {
-            transform.position += new Vector3(16f, 0f, 0f);
+            transform.localPosition += new Vector3(16f, 0f, 0f);
         }
     }
 }

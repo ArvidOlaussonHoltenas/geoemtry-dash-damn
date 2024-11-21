@@ -9,8 +9,7 @@ public class SwitchCam : MonoBehaviour
 {
     [SerializeField] GameObject groundRoof;
     public Player player;
-
-    public CinemachineBrain mainCam;
+    [SerializeField] CinemachineBrain mainCamera;
     public CinemachineVirtualCamera normalCam;
     public CinemachineVirtualCamera roofCam;
 
@@ -26,16 +25,10 @@ public class SwitchCam : MonoBehaviour
         {
             CameraManager.SwitchCamera(normalCam);
             groundRoof.GetComponent<BoxCollider2D>().enabled = false;
-            StartCoroutine(WaitCoroutineAndFreeRoam(0.5f));
-        }
-    }
-
-    private IEnumerator WaitCoroutineAndFreeRoam(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        if (CameraManager.ActiveCamera == normalCam)
-        {
-            groundRoof.SetActive(false);
+            if (mainCamera.ActiveBlend.BlendWeight + 0.01 >= 1f)
+            {
+                groundRoof.SetActive(false);
+            }
         }
     }
 }
