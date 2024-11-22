@@ -11,6 +11,9 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] CameraManager cameraManager;
+    [SerializeField] CameraY cameraY;
+
     [SerializeField] float moveSpeed = 12f;
     [SerializeField] float jumpHeight = 10f;
     [SerializeField] float shipPower = 1f;
@@ -101,7 +104,6 @@ public class Player : MonoBehaviour
 
     void CubePhysics()
     {
-        roof = false;
         rb.gravityScale = 7 * flipGravity;
         if (isGrounded() && jumpInput)
         {
@@ -111,7 +113,6 @@ public class Player : MonoBehaviour
 
     void ShipPhysics()
     {
-        roof = true;
         rb.gravityScale = 3 * flipGravity;
 
         //Limit vertical velocity
@@ -132,7 +133,6 @@ public class Player : MonoBehaviour
 
     void UfoPhysics()
     {
-        roof = true;
         rb.gravityScale = 6 * flipGravity;
         if (jumpInputPressed)
         {
@@ -142,7 +142,6 @@ public class Player : MonoBehaviour
 
     void WavePhysics()
     {
-        roof = true;
         rb.gravityScale = 0;
         if (jumpInput)
         {
@@ -159,22 +158,41 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gamemode = "cube";
+            Roof(false);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             gamemode = "ship";
+            Roof(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             gamemode = "ufo";
+            Roof(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             gamemode = "wave";
+            Roof(true);
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
             flipGravity = -flipGravity; //Flip gravity!
+        }
+    }
+
+    void Roof(bool enableRoof)
+    {
+        if (enableRoof)
+        {
+            cameraY.followY = transform.position.y;
+            roof = true;
+            CameraManager.SwitchCamera(cameraManager.roofCam);
+        }
+        else
+        {
+            roof = false;
+            CameraManager.SwitchCamera(cameraManager.normalCam);
         }
     }
 }

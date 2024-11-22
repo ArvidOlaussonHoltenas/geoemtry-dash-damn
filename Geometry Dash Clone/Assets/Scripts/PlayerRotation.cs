@@ -8,10 +8,9 @@ using UnityEngine.UIElements;
 public class PlayerRotation : MonoBehaviour
 {
     public GameObject playerExtra;
-    public Player player;
-
     public Sprite[] sprites;
-    private SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer;
+    [SerializeField] Player player;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

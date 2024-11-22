@@ -7,28 +7,23 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class SwitchCam : MonoBehaviour
 {
+    [SerializeField] CameraManager cameraManager;
+    [SerializeField] Player player;
     [SerializeField] GameObject groundRoof;
-    public Player player;
-    [SerializeField] CinemachineBrain mainCamera;
-    public CinemachineVirtualCamera normalCam;
-    public CinemachineVirtualCamera roofCam;
+    [SerializeField] FixGroundRoof fixGroundRoof;
 
     void Update()
     {
         if (player.roof)
         {
-            CameraManager.SwitchCamera(roofCam);
             groundRoof.GetComponent<BoxCollider2D>().enabled = true;
-            groundRoof.SetActive(true);
+            fixGroundRoof.maxY = groundRoof.transform.localPosition.y;
         }
         else
         {
-            CameraManager.SwitchCamera(normalCam);
+            CameraManager.SwitchCamera(cameraManager.normalCam);
             groundRoof.GetComponent<BoxCollider2D>().enabled = false;
-            if (mainCamera.ActiveBlend.BlendWeight + 0.01 >= 1f)
-            {
-                groundRoof.SetActive(false);
-            }
+            fixGroundRoof.minY = groundRoof.transform.localPosition.y;
         }
     }
 }

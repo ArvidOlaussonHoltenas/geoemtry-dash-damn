@@ -10,13 +10,11 @@ public class CameraY : MonoBehaviour
     [SerializeField] GameObject playerObject;
     [SerializeField] Player player;
     float followX;
-    float followY;
+    public float followY;
 
     private void Update()
     {
         followX = playerObject.transform.position.x + 2.665698f;
-        //followY = groundRoof.transform.position.y - ground.transform.position.y - 9f;
-        followY = 4;
         transform.position = new Vector3(followX, followY, transform.position.z);
     }
 }

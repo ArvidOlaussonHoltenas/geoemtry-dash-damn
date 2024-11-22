@@ -505,7 +505,7 @@ Transform:
   m_GameObject: {fileID: 328364157}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.5000002, z: 0}
+  m_LocalPosition: {x: 0, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1065,7 +1065,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.665625, y: 1.4999998, z: -10}
+  m_LocalPosition: {x: 2.6663525, y: 1.4999998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1119,6 +1119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98d3e1cff10a2f478b0d83000adc4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 519420034}
+  normalCam: {fileID: 2036283107}
+  roofCam: {fileID: 1804647838}
 --- !u!20 &519420037
 Camera:
   m_ObjectHideFlags: 0
@@ -1279,10 +1282,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerExtra: {fileID: 500877117}
-  player: {fileID: 1736679660}
   sprites:
   - {fileID: 21300000, guid: 76b08f0bb3010fb4e89559b47a5cefb7, type: 3}
   - {fileID: 21300000, guid: 8ddd6fc4fd36dbe49850b4919eb6e499, type: 3}
+  player: {fileID: 1736679660}
 --- !u!4 &654633676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5252228360920860798, guid: c6b21ea350d9b1b45b101243afa985a9, type: 3}
@@ -1658,7 +1661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1407893798
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1765,7 +1768,7 @@ Transform:
   m_GameObject: {fileID: 1407893796}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -2.665625, y: 7, z: 10}
+  m_LocalPosition: {x: 0, y: 7, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1783,10 +1786,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee98e56e2bc191645840d409616af7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 519420034}
-  normalCam: {fileID: 2036283107}
-  roofCam: {fileID: 1804647838}
+  cameraManager: {fileID: 519420035}
   ground: {fileID: 328364157}
+  minY: 0
+  maxY: 0
 --- !u!4 &1451694687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5252228360920860798, guid: c6b21ea350d9b1b45b101243afa985a9, type: 3}
@@ -1957,6 +1960,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae32cadb93e9a464d9fc24232c5898bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraManager: {fileID: 519420035}
+  cameraY: {fileID: 1804647842}
   moveSpeed: 9
   jumpHeight: 2.2
   shipPower: 65
@@ -2217,11 +2222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d776e3843397df4bb4e22b461a0db32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundRoof: {fileID: 1407893796}
+  cameraManager: {fileID: 519420035}
   player: {fileID: 1736679660}
-  mainCamera: {fileID: 519420034}
-  normalCam: {fileID: 2036283107}
-  roofCam: {fileID: 1804647838}
+  groundRoof: {fileID: 1407893796}
+  fixGroundRoof: {fileID: 1407893801}
 --- !u!1001 &1803260777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2393,6 +2397,7 @@ MonoBehaviour:
   groundRoof: {fileID: 1407893796}
   playerObject: {fileID: 1736679659}
   player: {fileID: 1736679660}
+  followY: 0
 --- !u!1 &1804973044
 GameObject:
   m_ObjectHideFlags: 3
@@ -2619,7 +2624,7 @@ Transform:
   m_GameObject: {fileID: 2036283105}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.665625, y: 1.4999998, z: -10}
+  m_LocalPosition: {x: 2.6663525, y: 1.4999998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

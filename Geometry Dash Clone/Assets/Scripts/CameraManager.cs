@@ -5,6 +5,10 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
+    [SerializeField] public CinemachineBrain mainCam;
+    [SerializeField] public CinemachineVirtualCamera normalCam;
+    [SerializeField] public CinemachineVirtualCamera roofCam;
+
     static List<CinemachineVirtualCamera> cameras = new List<CinemachineVirtualCamera>();
 
     public static CinemachineVirtualCamera ActiveCamera = null;
