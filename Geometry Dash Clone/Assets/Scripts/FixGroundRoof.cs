@@ -10,13 +10,24 @@ public class FixGroundRoof : MonoBehaviour
 {
     [SerializeField] CameraManager cameraManager;
     [SerializeField] GameObject ground;
+    [SerializeField] GameObject groundRoof;
+    [SerializeField] Player player;
+    [SerializeField] GameObject playerObject;
     float blendPercentage;
-    public float minY;
-    public float maxY;
+    public float limitY;
     float transitionY;
+    float infiniteX;
 
     void Update()
     {
+        limitY = transform.localPosition.y;
+
+        transform.localPosition = new Vector3(-playerObject.transform.position.x + infiniteX, transform.localPosition.y, transform.localPosition.z);
+        if (transform.localPosition.x <= -16)
+        {
+            infiniteX += 16f;
+        }
+
         if (cameraManager.mainCam.IsBlending)
         {
             blendPercentage = cameraManager.mainCam.ActiveBlend.BlendWeight;
@@ -31,7 +42,7 @@ public class FixGroundRoof : MonoBehaviour
             }
             else
             {
-                transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Max(6.5f + transitionY, maxY), transform.localPosition.z);
+                transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Max(6.5f + transitionY, limitY), transform.localPosition.z);
             }
         }
         if (cameraManager.roofCam.Priority == 10)
@@ -42,10 +53,8 @@ public class FixGroundRoof : MonoBehaviour
             }
             else
             {
-                transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Min(7f - transitionY, minY), transform.localPosition.z);
+                transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Min(7f - transitionY, limitY), transform.localPosition.z);
             }
         }
-
-        transform.position = new Vector3(ground.transform.position.x, transform.position.y, transform.position.z);
     }
 }

@@ -12,7 +12,6 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     [SerializeField] CameraManager cameraManager;
-    [SerializeField] CameraY cameraY;
 
     [SerializeField] float moveSpeed = 12f;
     [SerializeField] float jumpHeight = 10f;
@@ -185,7 +184,6 @@ public class Player : MonoBehaviour
     {
         if (enableRoof)
         {
-            cameraY.followY = transform.position.y;
             roof = true;
             CameraManager.SwitchCamera(cameraManager.roofCam);
         }

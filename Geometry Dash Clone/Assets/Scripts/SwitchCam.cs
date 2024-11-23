@@ -17,12 +17,10 @@ public class SwitchCam : MonoBehaviour
         if (player.roof)
         {
             groundRoof.GetComponent<BoxCollider2D>().enabled = true;
-            fixGroundRoof.maxY = groundRoof.transform.localPosition.y;
         }
         else
         {
             groundRoof.GetComponent<BoxCollider2D>().enabled = false;
-            fixGroundRoof.minY = groundRoof.transform.localPosition.y;
         }
     }
 }
