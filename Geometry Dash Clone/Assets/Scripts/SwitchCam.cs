@@ -21,7 +21,6 @@ public class SwitchCam : MonoBehaviour
         }
         else
         {
-            CameraManager.SwitchCamera(cameraManager.normalCam);
             groundRoof.GetComponent<BoxCollider2D>().enabled = false;
             fixGroundRoof.minY = groundRoof.transform.localPosition.y;
         }
