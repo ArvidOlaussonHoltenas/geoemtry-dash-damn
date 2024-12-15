@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,7 +11,6 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     [SerializeField] CameraManager cameraManager;
-
     [SerializeField] float moveSpeed = 12f;
     [SerializeField] float jumpHeight = 10f;
     [SerializeField] float shipPower = 1f;

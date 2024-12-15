@@ -9,12 +9,9 @@ using UnityEngine.UIElements;
 public class FixGroundRoof : MonoBehaviour
 {
     [SerializeField] CameraManager cameraManager;
-    [SerializeField] GameObject ground;
-    [SerializeField] GameObject groundRoof;
-    [SerializeField] Player player;
     [SerializeField] GameObject playerObject;
     float blendPercentage;
-    public float limitY;
+    float limitY;
     float transitionY;
     float infiniteX;
 

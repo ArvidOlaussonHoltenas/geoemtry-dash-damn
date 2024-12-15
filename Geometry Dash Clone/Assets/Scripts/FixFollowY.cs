@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fixFollowY : MonoBehaviour
+public class FixFollowY : MonoBehaviour
 {
     [SerializeField] GameObject playerObject;
     [SerializeField] Player player;
@@ -11,7 +11,7 @@ public class fixFollowY : MonoBehaviour
     {
         if (!player.roof)
         {
-            transform.position = new Vector3(playerObject.transform.position.x, playerObject.transform.position.y, transform.position.z);
+            transform.position = new Vector3(playerObject.transform.position.x, Mathf.Round(playerObject.transform.position.y), transform.position.z);
         }
         else
         {

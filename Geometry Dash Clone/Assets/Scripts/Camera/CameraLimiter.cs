@@ -6,7 +6,7 @@ public class CameraLimiter : MonoBehaviour
 {
     void Update()
     {
-        if (transform.position.y < 1.5)
+        if (transform.position.y < 1.5f)
         {
             transform.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
         }

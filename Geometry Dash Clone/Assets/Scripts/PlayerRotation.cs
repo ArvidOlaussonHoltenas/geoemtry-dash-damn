@@ -24,7 +24,7 @@ public class PlayerRotation : MonoBehaviour
             playerExtra.SetActive(false);
             transform.localScale = new Vector3(1f, 1f, 1f);
             transform.localPosition = new Vector3(0f, 0f, -0.25f);
-            float targetAngle = Mathf.Ceil(transform.rotation.z / 90) * 90;
+            float targetAngle = Mathf.Round(transform.rotation.z / 90) * 90;
             if (!player.isGrounded())
             {
                 transform.Rotate(0f, 0f, -560f * Time.deltaTime);
@@ -49,19 +49,5 @@ public class PlayerRotation : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, 0f), 20f * Time.deltaTime);
             }
         }
-    }
-
-    public int SnapRotation(int rotation)
-    {
-        int remainder = rotation % 360;
-
-        int snappedRotation = (int)(Math.Round((double)remainder / 90) * 90);
-
-        if (snappedRotation < -270)
-        {
-            snappedRotation += 360;
-        }
-
-        return snappedRotation;
     }
 }
